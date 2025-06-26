@@ -16,9 +16,8 @@ function updatePreview() {
   line-height: 1.6;
   width: 100%;
   table-layout: auto;
-  word-break: break-word;
-  max-width: 100%;
-  width:600px">
+  word-break: break-word;"
+  >
       <tr><td style="font-size:1.25rem;"><strong>${name}</strong></td></tr>
       <tr><td><em>${area}</em></td></tr>
       <tr><td>M: <strong>${phone}</strong></td></tr>
