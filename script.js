@@ -1,74 +1,70 @@
-  // Toggle social media options
-  function toggleSocialOptions() {
-    // Hide all options first
-    document.querySelectorAll('.social-options').forEach(el => {
-      el.style.display = 'none';
-    });
-    
-    // Show selected option
-    const selected = document.getElementById('social-select').value;
-    if (selected) {
-      document.getElementById(`${selected}-options`).style.display = 'block';
-    }
-  }
+const inputs = document.querySelectorAll('input, select');
+const preview = document.getElementById('signature-preview');
+const copyBtn = document.getElementById('copy-btn');
 
-  // Generate signature
-  document.getElementById('generate-btn').addEventListener('click', function() {
-    const selectedSocial = document.getElementById('social-select').value;
-    let socialHTML = '';
-    
-    if (selectedSocial === 'instagram') {
-      const url = document.getElementById('instagram-url').value;
-      const text = document.getElementById('instagram-text').value || 'Instagram';
-      socialHTML = `
-        <tr>
-          <td style="padding: 3px 0;">
-            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" class="social-icon" alt="Instagram">
-            <a href="${url}" style="color: #0066cc; text-decoration: none;">${text}</a>
-          </td>
-        </tr>
-      `;
-    }
-    // Add other social networks similarly...
-    
-    const signatureHTML = `
-    <table style="font-family: Arial, sans-serif; font-size: 13px; border-left: 3px solid #0066cc; padding-left: 15px; margin: 0; color: #333; line-height: 1.5;">
+function updatePreview() {
+  const name = document.getElementById('name').value || 'Full Name';
+  const area = document.getElementById('area').value || 'Department/Area';
+  const phone = document.getElementById('phone').value || '+00 00 0 0000 0000';
+  const unit = document.getElementById('business-unit').value;
+
+  const signatureHTML = `
+    <table style="font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  padding: 30px;
+  color: #333;
+  line-height: 1.6;
+  width: 100%;
+  table-layout: auto;
+  word-break: break-word;
+  max-width: 100%;
+  width:600px">
+      <tr><td style="font-size:1.25rem;"><strong>${name}</strong></td></tr>
+      <tr><td><em>${area}</em></td></tr>
+      <tr><td>M: <strong>${phone}</strong></td></tr>
+      <tr><td style="display:block;padding-top:15px;"><img src="https://cdn.griinstitute.org/uploads/files/logo_gri_institute_2025_6_26_17_03_22_1750957402.webp" alt="GRI Institute Logo" width="152"></td></tr>
+      <tr><td style="font-size:0.875rem;color:#9B9B9B"><i>“Building the future through strategic thinking and extraordinary relationships”</i></td></tr>
+      <tr><td style="border-bottom: 1px solid #cccccc;"></td></tr>
       <tr>
-        <td style="padding: 3px 0;"><strong>${document.getElementById('nome').value}</strong></td>
-      </tr>
-      <tr>
-        <td style="padding: 3px 0;"><em>${document.getElementById('cargo').value}</em></td>
-      </tr>
-      <tr>
-        <td style="padding: 3px 0;">
-          📞 ${document.getElementById('telefone').value}
-        </td>
-      </tr>
-      <tr>
-        <td style="padding: 3px 0;">
-          ✉️ <a href="mailto:${document.getElementById('email').value}" style="color: #0066cc; text-decoration: none;">
-            ${document.getElementById('email').value}
+        <td style="padding-top: 8px; display:flex;flex-wrap:wrap;gap:15px;font-size:0.875rem;">
+          <a target="_blank" href="https://griinstitute.org" style="color: #283858;text-decoration: underline;display:flex;align-items:center;gap:5px;">
+            <img src="https://cdn.griinstitute.org/uploads/files/globe_2025_6_26_17_03_21_1750957401.webp" alt="Website" height="18" style="vertical-align: middle;"> griinstitute.org
+          </a>
+          <a target="_blank" href="https://linkedin.com/company/griinstitute" style="color: #283858;text-decoration: underline;display:flex;align-items:center;gap:5px;">
+            <img src="https://cdn.griinstitute.org/uploads/files/linkedin_2025_6_26_17_03_21_1750957401.webp" alt="LinkedIn" height="18" style="vertical-align: middle;"> LinkedIn
+          </a>
+          <a target="_blank" href="https://instagram.com/griinstitute" style="color: #283858;text-decoration: underline;display:flex;align-items:center;gap:5px;">
+            <img src="https://cdn.griinstitute.org/uploads/files/instagram_2025_6_26_17_03_21_1750957401.webp" alt="Instagram" height="18" style="vertical-align: middle;"> Instagram
+          </a>
+          <a target="_blank" href="https://youtube.com/@GRIInstitute" style="color: #283858;text-decoration: underline; display:flex;align-items:center;gap:5px;">
+            <img src="https://cdn.griinstitute.org/uploads/files/youtube_2025_6_26_17_03_21_1750957401.webp" alt="YouTube" height="18" style="vertical-align: middle;"> YouTube
           </a>
         </td>
       </tr>
-      ${socialHTML}
     </table>
-    `;
-    
-    document.getElementById('signature-preview').innerHTML = signatureHTML;
-    document.getElementById('html-output').value = signatureHTML;
-  });
+  `;
 
-  // Copy HTML
-  document.getElementById('copy-btn').addEventListener('click', function() {
-    const htmlOutput = document.getElementById('html-output');
-    htmlOutput.select();
-    document.execCommand('copy');
-    
-    // Visual feedback
-    const btn = this;
-    btn.textContent = 'Copiado!';
-    setTimeout(() => {
-      btn.textContent = 'Copiar HTML';
-    }, 2000);
-  });
+  preview.innerHTML = signatureHTML;
+}
+
+inputs.forEach(input => input.addEventListener('input', updatePreview));
+updatePreview();
+
+copyBtn.addEventListener('click', function () {
+  const range = document.createRange();
+  range.selectNodeContents(preview);
+  const selection = window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(range);
+
+  try {
+    const success = document.execCommand('copy');
+    selection.removeAllRanges();
+
+    this.textContent = success ? 'Copied!' : 'Copy failed';
+  } catch (err) {
+    this.textContent = 'Error copying';
+  }
+
+  setTimeout(() => this.textContent = 'Copy Signature', 2000);
+});
