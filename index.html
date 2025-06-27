@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>GRI Institute - Email signature</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="generator">
     <div class="form-section">
@@ -15,16 +17,23 @@
         <input type="text" id="name" placeholder="Your full name">
       </div>
       <div class="form-row">
-        <label for="area">Area</label>
-        <input type="text" id="area" placeholder="Your department/area">
+        <label for="jobTitle">Job title</label>
+        <input type="text" id="jobTitle" placeholder="Your job title">
       </div>
+      <hr>
       <div class="form-row">
+        <label style="user-select: none;cursor:pointer;">
+          <input type="checkbox" id="showPhone" style="cursor:pointer;">
+          Include mobile phone number
+        </label>
+      </div>
+      <div class="form-row" id="phoneRow" style="display: none;">
         <label for="phone">Mobile phone number</label>
         <input type="tel" id="phone" placeholder="00 00 0 0000 0000">
       </div>
       <div class="form-row">
         <label for="business-unit">Business Unit</label>
-        <select id="business-unit">
+        <select style="cursor:pointer;" id="business-unit">
           <option value="Global">Global</option>
           <option value="Infrastructure">Infrastructure</option>
           <option value="RE Brazil">RE Brazil</option>
@@ -47,4 +56,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>

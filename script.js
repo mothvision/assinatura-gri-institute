@@ -1,13 +1,16 @@
 const inputs = document.querySelectorAll('input, select');
 const preview = document.getElementById('signature-preview');
 const copyBtn = document.getElementById('copy-btn');
+const showPhoneCheckbox = document.getElementById('showPhone');
+const phoneRow = document.getElementById('phoneRow');
+
 const businessLinks = {
   "Global": {
-    linkedin:{
+    linkedin: {
       url: "https://www.linkedin.com/company/griinstitute/",
       text: "griinstitute",
     },
-    instagram:{
+    instagram: {
       url: "https://www.instagram.com/griinstitute/",
       text: "griinstitute",
     },
@@ -64,28 +67,31 @@ const businessLinks = {
   },
 };
 
-
 function updatePreview() {
   const name = document.getElementById('name').value || 'Full Name';
-  const area = document.getElementById('area').value || 'Department/Area';
-  const phone = document.getElementById('phone').value || '00 00 0 0000 0000';
+  const jobTitle = document.getElementById('jobTitle').value || 'Job Title';
+  const phone = document.getElementById('phone').value.trim();
+  const showPhone = showPhoneCheckbox.checked;
   const businessUnit = document.getElementById('business-unit').value;
-
   const links = businessLinks[businessUnit];
+
+  const phoneRowHTML = (showPhone && phone)
+    ? `<tr><td>M: <strong>+${phone}</strong></td></tr>`
+    : '';
 
   const signatureHTML = `
     <table style="font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  padding: 30px;
-  color: #333;
-  line-height: 1.25;
-  width: 100%;
-  table-layout: auto;
-  word-break: break-word;"
-  >
+      font-size: 1rem;
+      padding: 20px 0;
+      color: #333;
+      line-height: 1.25;
+      width: 100%;
+      table-layout: auto;
+      word-break: break-word;">
+      
       <tr><td style="font-size:1.25rem;"><strong>${name}</strong></td></tr>
-      <tr><td><em>${area}</em></td></tr>
-      <tr><td>M: <strong>+${phone}</strong></td></tr>
+      <tr><td>${jobTitle}</td></tr>
+      ${phoneRowHTML}
       <tr><td style="display:block;padding-top:15px;"><img src="https://cdn.griinstitute.org/uploads/files/signature_gri_logo_2025_6_27_12_45_40_1751028340.jpg" alt="GRI Institute Logo" width="160"></td></tr>
       <tr><td style="font-size:0.875rem;color:#9B9B9B"><i>“Building the future through strategic thinking and extraordinary relationships”</i></td></tr>
       <tr><td style="border-bottom: 1px solid #cccccc;"></td></tr>
@@ -112,6 +118,11 @@ function updatePreview() {
 }
 
 inputs.forEach(input => input.addEventListener('input', updatePreview));
+showPhoneCheckbox.addEventListener('change', () => {
+  phoneRow.style.display = showPhoneCheckbox.checked ? 'block' : 'none';
+  updatePreview();
+});
+
 updatePreview();
 
 copyBtn.addEventListener('click', function () {
@@ -119,7 +130,6 @@ copyBtn.addEventListener('click', function () {
 
   if (table) {
     const originalWidth = table.style.width;
-
     table.style.width = '700px';
 
     const range = document.createRange();
@@ -136,7 +146,6 @@ copyBtn.addEventListener('click', function () {
     }
 
     window.getSelection().removeAllRanges();
-
     table.style.width = originalWidth;
 
     setTimeout(() => {
