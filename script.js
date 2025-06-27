@@ -76,12 +76,12 @@ function updatePreview() {
   const links = businessLinks[businessUnit];
 
   const phoneRowHTML = (showPhone && phone)
-    ? `<tr><td style="padding-top:5px;">M: <strong>+${phone}</strong></td></tr>`
+    ? `<tr><td style="padding-top:5px;">M: +${phone}</td></tr>`
     : '';
 
   const signatureHTML = `
     <table cellspacing="0" style="font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
+      font-size: 0.875rem;
       padding: 20px 0;
       color: #333;
       line-height: 1.25;
@@ -93,7 +93,7 @@ function updatePreview() {
       <tr><td>${jobTitle}</td></tr>
       ${phoneRowHTML}
       <tr><td style="display:block;padding-top:15px;"><img src="https://cdn.griinstitute.org/uploads/files/signature_gri_logo_2025_6_27_14_58_01_1751036281.jpg" alt="GRI Institute Logo" width="140"></td></tr>
-      <tr><td style="font-size:0.875rem;color:#9B9B9B"><i>“Building the future through strategic thinking and extraordinary relationships”</i></td></tr>
+      <tr><td style="color:#9B9B9B"><i>“Building the future through strategic thinking and extraordinary relationships”</i></td></tr>
       <tr><td style="border-bottom: 1px solid #cccccc;"></td></tr>
       <tr>
         <td style="padding-top: 5px; font-size:0.825rem;">
