@@ -1,3 +1,6 @@
+body {
+  background: #181818;
+}
 .generator {
   display: flex;
   flex-wrap:wrap;
@@ -5,27 +8,30 @@
   font-family: Montserrat, sans-serif;
   margin: 0 auto;
   padding: 20px;
-  max-width:1500px;
 }
+
 .form-section {
   flex: 1 1 300px;
   background: #f9f9f9;
   max-width:400px;
   padding: 20px;
-  border-radius: 8px;
 }
+
 .form-section h3 {
   margin-top: 0;
   color: #333;
 }
+
 .form-row {
   margin-bottom: 15px;
 }
+
 label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
+
 input[type="text"],
 input[type="tel"],
 select {
@@ -35,26 +41,34 @@ select {
   border-radius: 4px;
   box-sizing: border-box;
 }
+
 button {
-  background-color: #0066cc;
+  background-color: #948459;
   color: white;
   border: none;
   padding: 10px 15px;
-  border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
   margin-top: 10px;
+  transition: all 0.3s ease-in-out;
 }
+
 button:hover {
-  background-color: #0055aa;
+  background-color: #a49672;
+  transition: all 0.2s ease-in;
 }
+
 .preview-section {
-  flex: 1 1 650px;
-  max-width:650px;
+  flex: 1 1 700px;
   background: #f9f9f9;
   padding: 20px;
-  border-radius: 8px;
 }
+
+.preview-section h3 {
+  margin-top: 0;
+  color: #333;
+}
+
 .signature-preview {
   border: 1px dashed #ccc;
   margin: 15px 0;

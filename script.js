@@ -1,42 +1,107 @@
 const inputs = document.querySelectorAll('input, select');
 const preview = document.getElementById('signature-preview');
 const copyBtn = document.getElementById('copy-btn');
+const businessLinks = {
+  "Global": {
+    linkedin:{
+      url: "https://www.linkedin.com/company/griinstitute/",
+      text: "griinstitute",
+    },
+    instagram:{
+      url: "https://www.instagram.com/griinstitute/",
+      text: "griinstitute",
+    },
+  },
+  "RE Brazil": {
+    linkedin: {
+      url: "https://www.linkedin.com/showcase/gri-institute-brasil/",
+      text: "gri-institute-brasil"
+    },
+    instagram: {
+      url: "https://www.instagram.com/griinstitute.brazil/",
+      text: "griinstitute.brazil"
+    }
+  },
+  "RE India": {
+    linkedin: {
+      url: "https://www.linkedin.com/showcase/gri-institute-india/",
+      text: "gri-institute-india"
+    },
+    instagram: {
+      url: "https://instagram.com/griinstitute.india",
+      text: "griinstitute.india"
+    }
+  },
+  "RE Europe": {
+    linkedin: {
+      url: "https://www.linkedin.com/showcase/gri-institute-europe/",
+      text: "gri-institute-europe"
+    },
+    instagram: {
+      url: "https://instagram.com/griinstitute.europe",
+      text: "griinstitute.europe"
+    }
+  },
+  "RE Latam": {
+    linkedin: {
+      url: "https://www.linkedin.com/showcase/gri-institute-latam/",
+      text: "gri-institute-latam"
+    },
+    instagram: {
+      url: "https://instagram.com/griinstitute.latam",
+      text: "griinstitute.latam"
+    }
+  },
+  "Infrastructure": {
+    linkedin: {
+      url: "https://www.linkedin.com/showcase/gri-institute-infrastructure/",
+      text: "gri-institute-infrastructure"
+    },
+    instagram: {
+      url: "https://www.instagram.com/griinstitute.infra/",
+      text: "griinstitute.infra"
+    }
+  },
+};
+
 
 function updatePreview() {
   const name = document.getElementById('name').value || 'Full Name';
   const area = document.getElementById('area').value || 'Department/Area';
-  const phone = document.getElementById('phone').value || '+00 00 0 0000 0000';
-  const unit = document.getElementById('business-unit').value;
+  const phone = document.getElementById('phone').value || '00 00 0 0000 0000';
+  const businessUnit = document.getElementById('business-unit').value;
+
+  const links = businessLinks[businessUnit];
 
   const signatureHTML = `
     <table style="font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   padding: 30px;
   color: #333;
-  line-height: 1.6;
+  line-height: 1.25;
   width: 100%;
   table-layout: auto;
   word-break: break-word;"
   >
       <tr><td style="font-size:1.25rem;"><strong>${name}</strong></td></tr>
       <tr><td><em>${area}</em></td></tr>
-      <tr><td>M: <strong>${phone}</strong></td></tr>
-      <tr><td style="display:block;padding-top:15px;"><img src="https://cdn.griinstitute.org/uploads/files/logo_gri_institute_2025_6_26_17_03_22_1750957402.webp" alt="GRI Institute Logo" width="152"></td></tr>
+      <tr><td>M: <strong>+${phone}</strong></td></tr>
+      <tr><td style="display:block;padding-top:15px;"><img src="https://cdn.griinstitute.org/uploads/files/signature_gri_logo_2025_6_27_12_45_40_1751028340.jpg" alt="GRI Institute Logo" width="160"></td></tr>
       <tr><td style="font-size:0.875rem;color:#9B9B9B"><i>“Building the future through strategic thinking and extraordinary relationships”</i></td></tr>
       <tr><td style="border-bottom: 1px solid #cccccc;"></td></tr>
       <tr>
-        <td style="padding-top: 8px; display:flex;flex-wrap:wrap;gap:15px;font-size:0.875rem;">
-          <a target="_blank" href="https://griinstitute.org" style="color: #283858;text-decoration: underline;display:flex;align-items:center;gap:5px;">
-            <img src="https://cdn.griinstitute.org/uploads/files/globe_2025_6_26_17_03_21_1750957401.webp" alt="Website" height="18" style="vertical-align: middle;"> griinstitute.org
+        <td style="padding-top: 8px; font-size:0.825rem;">
+          <a target="_blank" href="https://griinstitute.org" style="color: #283858;text-decoration: underline;align-items:center;margin-right:15px;margin-bottom:5px;display:inline-block;">
+            <img src="https://cdn.griinstitute.org/uploads/files/signature_globe_icon_2025_6_26_20_11_19_1750968679.png" alt="Website" width="14" style="vertical-align: middle;margin-right:5px;">griinstitute.org
           </a>
-          <a target="_blank" href="https://linkedin.com/company/griinstitute" style="color: #283858;text-decoration: underline;display:flex;align-items:center;gap:5px;">
-            <img src="https://cdn.griinstitute.org/uploads/files/linkedin_2025_6_26_17_03_21_1750957401.webp" alt="LinkedIn" height="18" style="vertical-align: middle;"> LinkedIn
+          <a target="_blank" href="${links.linkedin.url}" style="color: #283858;text-decoration: underline;align-items:center;margin-right:15px;margin-bottom:5px;display:inline-block;">
+            <img src="https://cdn.griinstitute.org/uploads/files/signature_linkedin_icon_2025_6_26_20_11_20_1750968680.png" alt="LinkedIn" width="14" style="vertical-align: middle;margin-right:5px;">${links.linkedin.text}
           </a>
-          <a target="_blank" href="https://instagram.com/griinstitute" style="color: #283858;text-decoration: underline;display:flex;align-items:center;gap:5px;">
-            <img src="https://cdn.griinstitute.org/uploads/files/instagram_2025_6_26_17_03_21_1750957401.webp" alt="Instagram" height="18" style="vertical-align: middle;"> Instagram
+          <a target="_blank" href="${links.instagram.url}" style="color: #283858;text-decoration: underline;align-items:center;margin-right:15px;margin-bottom:5px;display:inline-block;">
+            <img src="https://cdn.griinstitute.org/uploads/files/signature_instagram_icon_2025_6_26_20_11_20_1750968680.png" alt="Instagram" width="14" style="vertical-align: middle;margin-right:5px;">${links.instagram.text}
           </a>
-          <a target="_blank" href="https://youtube.com/@GRIInstitute" style="color: #283858;text-decoration: underline; display:flex;align-items:center;gap:5px;">
-            <img src="https://cdn.griinstitute.org/uploads/files/youtube_2025_6_26_17_03_21_1750957401.webp" alt="YouTube" height="18" style="vertical-align: middle;"> YouTube
+          <a target="_blank" href="https://youtube.com/@GRIInstitute" style="color: #283858;text-decoration: underline;align-items:center;display:inline-block;margin-bottom:5px;">
+            <img src="https://cdn.griinstitute.org/uploads/files/signature_youtube_icon_2025_6_26_20_08_53_1750968533.png" alt="YouTube" width="14" style="vertical-align: middle;margin-right:5px;">@GRIInstitute
           </a>
         </td>
       </tr>
@@ -50,20 +115,32 @@ inputs.forEach(input => input.addEventListener('input', updatePreview));
 updatePreview();
 
 copyBtn.addEventListener('click', function () {
-  const range = document.createRange();
-  range.selectNodeContents(preview);
-  const selection = window.getSelection();
-  selection.removeAllRanges();
-  selection.addRange(range);
+  const table = preview.querySelector('table');
 
-  try {
-    const success = document.execCommand('copy');
+  if (table) {
+    const originalWidth = table.style.width;
+
+    table.style.width = '700px';
+
+    const range = document.createRange();
+    range.selectNodeContents(preview);
+    const selection = window.getSelection();
     selection.removeAllRanges();
+    selection.addRange(range);
 
-    this.textContent = success ? 'Copied!' : 'Copy failed';
-  } catch (err) {
-    this.textContent = 'Error copying';
+    try {
+      const success = document.execCommand('copy');
+      this.textContent = success ? 'Copied!' : 'Copy failed';
+    } catch (err) {
+      this.textContent = 'Error copying';
+    }
+
+    window.getSelection().removeAllRanges();
+
+    table.style.width = originalWidth;
+
+    setTimeout(() => {
+      this.textContent = 'Copy Signature';
+    }, 4000);
   }
-
-  setTimeout(() => this.textContent = 'Copy Signature', 2000);
 });
