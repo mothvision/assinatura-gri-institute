@@ -92,7 +92,7 @@ function updatePreview() {
       <tr><td style="font-weight:600;">${name}</td></tr>
       <tr><td>${jobTitle}</td></tr>
       ${phoneRowHTML}
-      <tr><td style="display:block;padding-top:15px;"><img src="https://cdn.griinstitute.org/uploads/files/signature_gri_logo_2025_6_27_13_50_54_1751032254.jpg" alt="GRI Institute Logo" width="140"></td></tr>
+      <tr><td style="display:block;padding-top:15px;"><img src="https://cdn.griinstitute.org/uploads/files/signature_gri_logo_2025_6_27_14_58_01_1751036281.jpg" alt="GRI Institute Logo" width="140"></td></tr>
       <tr><td style="font-size:0.875rem;color:#9B9B9B"><i>“Building the future through strategic thinking and extraordinary relationships”</i></td></tr>
       <tr><td style="border-bottom: 1px solid #cccccc;"></td></tr>
       <tr>
