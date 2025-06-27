@@ -80,7 +80,7 @@ function updatePreview() {
     : '';
 
   const signatureHTML = `
-    <table style="font-family: 'Montserrat', sans-serif;
+    <table cellspacing="0" style="font-family: 'Montserrat', sans-serif;
       font-size: 1rem;
       padding: 20px 0;
       color: #333;
