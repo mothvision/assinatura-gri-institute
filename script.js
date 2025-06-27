@@ -76,7 +76,7 @@ function updatePreview() {
   const links = businessLinks[businessUnit];
 
   const phoneRowHTML = (showPhone && phone)
-    ? `<tr><td>M: <strong>+${phone}</strong></td></tr>`
+    ? `<tr><td style="padding-top:5px;">M: <strong>+${phone}</strong></td></tr>`
     : '';
 
   const signatureHTML = `
@@ -92,11 +92,11 @@ function updatePreview() {
       <tr><td style="font-size:1.25rem;"><strong>${name}</strong></td></tr>
       <tr><td>${jobTitle}</td></tr>
       ${phoneRowHTML}
-      <tr><td style="display:block;padding-top:15px;"><img src="https://cdn.griinstitute.org/uploads/files/signature_gri_logo_2025_6_27_12_45_40_1751028340.jpg" alt="GRI Institute Logo" width="160"></td></tr>
+      <tr><td style="display:block;padding-top:15px;"><img src="https://cdn.griinstitute.org/uploads/files/signature_gri_logo_2025_6_27_13_50_54_1751032254.jpg" alt="GRI Institute Logo" width="160"></td></tr>
       <tr><td style="font-size:0.875rem;color:#9B9B9B"><i>“Building the future through strategic thinking and extraordinary relationships”</i></td></tr>
       <tr><td style="border-bottom: 1px solid #cccccc;"></td></tr>
       <tr>
-        <td style="padding-top: 8px; font-size:0.825rem;">
+        <td style="padding-top: 5px; font-size:0.825rem;">
           <a target="_blank" href="https://griinstitute.org" style="color: #283858;text-decoration: underline;align-items:center;margin-right:15px;margin-bottom:5px;display:inline-block;">
             <img src="https://cdn.griinstitute.org/uploads/files/signature_globe_icon_2025_6_26_20_11_19_1750968679.png" alt="Website" width="14" style="vertical-align: middle;margin-right:5px;">griinstitute.org
           </a>
